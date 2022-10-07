@@ -1,0 +1,79 @@
+<html>
+<script>
+
+    var num1 = "n1", num2 = "n2", outputId = "result" , inputid="op";
+    var getnumbers = function (id) {
+        return parseInt(document.getElementById(id).value);
+    }
+    var showOutput = function (output) {
+
+        document.getElementById(outputId).innerHTML = output;
+    
+    }
+
+    var show = function (input) {
+
+document.getElementById(inputid).innerHTML = input;
+
+
+    }
+
+    var fetchoperator = function(){
+       fw= document.getElementById(inputid).textContent;
+         return fw;
+    }
+
+
+    var calculate = function (operationName, X, Y) {
+        if (operationName == '+')
+            return X + Y;
+        else if (operationName == '-')
+            return X - Y;
+        else if (operationName == '*')
+            return X * Y;
+        else if (operationName == '/')
+            return X / Y;
+
+    }
+    var operation = function () {
+        x = getnumbers(num1);
+        y = getnumbers(num2);
+        operationName= fetchoperator();
+        output = calculate(operationName, x, y);
+        showOutput(output);
+
+    };
+</script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+    Enter first number  
+    <input type="number" id="n1">
+    <br><br>
+    <h1 id="op"></h1>
+    Enter second number
+    <input type="number" id="n2">
+    <br><br>
+   
+  
+    <button type="button" onclick="show('+')"class="btn btn-primary">add</button>
+    
+    <button type="button"  onclick="show('-')" class="btn btn-success">sub</button>
+    <button type="button" onclick="show('*')" class="btn btn-danger">mult</button>
+    <button type="button"  onclick="show('/')" class="btn btn-warning">divide</button>
+    <button type="button"  onclick="operation()"  class="btn btn-primary">calculate</button>
+
+
+
+
+
+
+
+
+
+    <h1 id="result"></h1>
+</body>
+
+</html>
