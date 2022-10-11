@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+
+
+<script>
+   
+   
+
+
+
+
+    class parking {
+        constructor(name,vehiclenum,vehicletype){
+            this.name=name;
+            this.vehiclenum=vehiclenum;
+            this.vehicletype=vehicletype;
+        }
+
+
+        entering(){
+            if(this.vehicletype == 2){
+                check.this
+            }
+        }
+      
+    }
+
+    var twcharge = 25, fwcharge = 50, totalcharge = 0;
+    var num1 = "vtype", namee = "name", vnum = "vnumber", yu = "display";
+    var getnumber = function (id) {
+        return parseInt(document.getElementById(id).value);
+    }
+
+    var getname = function (id) {
+        return (document.getElementById(id).value);
+    }
+
+    var showOutput = function (outp, output) {
+
+        document.getElementById(outp).innerHTML = output;
+
+    }
+    var vehicleslot = [];
+
+    for (let i = 0; i < 400; i++)
+        vehicleslot[i] = -1;
+
+
+    const checkfour = () => {
+        for (let i = 100; i < 400; i++) {
+            if (vehicleslot[i] == -1)
+                return i;
+            else
+                return -1;
+        }
+
+    }
+
+
+    const checktwo = () => {
+        for (let i = 0; i < 100; i++) {
+            if (vehicleslot[i] == -1)
+                return i;
+            else
+                return -1;
+        }
+    }
+
+    const check = (type) => {
+        if (type == 2) {
+            let slotnumber = checktwo();
+            if (slotnumber >= 0 && slotnumber < 100)
+                return slotnumber;
+            else
+                return "NO SLOT AVAILABLE";
+        }
+
+        else if (type == 4) {
+            let slotnumb = checkfour()
+            if (slotnumb >= 100 && slotnumb <= 399)
+                return slotnumb;
+            else
+                return "NO SLOT AVAILABLE";
+        }
+    }
+
+
+    const func = (avail) => {
+
+        var n = getname(namee);
+        var nu = getnumber(vnum);
+
+        var out;
+        if (!(NaN(avail))) {
+            out = `HI ${n} with vehicle number ${num} . your parking slot is ${avail}. `;
+            showOutput(yu, out);
+        }
+        else {
+            out = `HI ${n} with vehicle number ${num} . sorry no slot is available`;
+            showOutput(yu, out);
+        }
+    }
+
+
+    const find = function () {
+        x = getnumber(num1);
+        var avail = check(x);
+        if (!(NaN(avail))) {
+            if (avail < 100) {
+                totalcharge = totalcharge + twcharge;
+                func(avail);
+            }
+            else if (avail < 400) {
+                totalcharge = totalcharge + fwcharge;
+                func(avail);
+            }
+        }
+        else
+            func(avail);
+
+
+    }
+
+</script>
+
+<body>
+    <div class="main-div">
+        <h1>WELCOME TO PARKING</h1>
+        <h3>TWO WHEELER COST = 25</h3><span>
+            <h3>FOUR WHEELER COST = 50</h3>
+        </span>
+        <input type="text" id="name" placeholder="enter your name">
+        <input type="text" id="vnumber" placeholder="enter your vehicle number">
+        <input type="number" id="vtype" placeholder="enter your vehicle type">
+        <button type="button" onclick="find()" class="btn btn-primary">CHECK FOR PARKING</button> <br><br>
+        <input type="text" id="display ">
+    </div>
+</body>
+
+
+
+
+
+
+
+  
+
+</html>
